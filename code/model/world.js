@@ -15,6 +15,10 @@ class Cell{
     return this.point.expand().filter((point)=>point.validate([0,world.width],[0,world.heigth]))
       .map((point)=>world.cells[point.x][point.y])
   }
+
+  get x(){return this.point.x}
+
+  get y(){return this.point.y}
 }
 
 class Region{

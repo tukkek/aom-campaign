@@ -3,6 +3,10 @@ div.map{
   justify-content:center;
   align-content:center;
 }
-div.map .cell.sea{background-color:blue;}
+div.map .cell.sea{background-color:darkblue;}
 div.map .cell.mix{background-color:sandybrown;}
 div.map .cell.land{background-color:brown;}
+@keyframes light{
+  50%{filter:brightness(2);}
+}
+div.map .cell.light{animation:light 2s infinite;}

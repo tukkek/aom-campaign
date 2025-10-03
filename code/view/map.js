@@ -6,8 +6,8 @@ export class Cell extends tiem.Clone{
 
   constructor(x,y){
     super('template.cell')
-    this.x=x
-    this.y=y
+    let world=clientm.world
+    this.model=world.cells[x][y]
   }
 
   create(parent=false){
@@ -17,8 +17,20 @@ export class Cell extends tiem.Clone{
     let size=`${Cell.size}px`
     style['width']=size
     style['height']=size
-    let world=clientm.world
-    root.classList.add(world.cells[this.x][this.y].region.biome.toLowerCase())
+    root.classList.add(this.model.region.biome.toLowerCase())
+    root.addEventListener('mouseenter',()=>this.enter())
+    root.addEventListener('mouseleave',()=>this.leave())
+    return this
+  }
+
+  enter(){
+    for(let cell of this.model.region.cells)
+      clientm.map.cells[cell.x][cell.y].root.classList.add('light')
+  }
+
+  leave(){
+    for(let cell of this.model.region.cells)
+      clientm.map.cells[cell.x][cell.y].root.classList.remove('light')
   }
 }
 

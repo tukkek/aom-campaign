@@ -4,7 +4,7 @@ import * as worldm from '../model/world.js'
 import * as mapm from '../view/map.js'
 
 export var world=new worldm.World()
-var map=new mapm.Map()
+export var map=new mapm.Map()
 
 export function ready(){
   world.create()
