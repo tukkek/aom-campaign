@@ -1,0 +1,18 @@
+[submodule "libraries/grid"]
+	path = libraries/grid
+	url = https://github.com/tukkek/tuktk-grid/
+[submodule "libraries/rpg"]
+	path = libraries/rpg
+	url = https://github.com/tukkek/tuktk-rpg/
+[submodule "libraries/point"]
+	path = libraries/point
+	url = https://github.com/tukkek/tuktk-point/
+[submodule "libraries/array"]
+	path = libraries/array
+	url = https://github.com/tukkek/tuktk-array/
+[submodule "libraries/range"]
+	path = libraries/range
+	url = https://github.com/tukkek/tuktk-range/
+[submodule "libraries/tie"]
+	path = libraries/tie
+	url = https://github.com/tukkek/tie/

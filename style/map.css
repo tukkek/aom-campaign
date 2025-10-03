@@ -1,0 +1,8 @@
+div.map{
+  display:grid;
+  justify-content:center;
+  align-content:center;
+}
+div.map .cell.sea{background-color:blue;}
+div.map .cell.mix{background-color:sandybrown;}
+div.map .cell.land{background-color:brown;}
