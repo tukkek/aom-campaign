@@ -3,7 +3,7 @@ div.map{
   justify-content:center;
   align-content:center;
 }
-div.map .cell{transition:2s all;}
+div.map .cell{transition:1s all;}
 div.map .cell.sea{background-color:darkblue;}
 div.map .cell.mix{background-color:sandybrown;}
 div.map .cell.land{background-color:brown;}
