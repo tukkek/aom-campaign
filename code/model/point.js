@@ -1,1 +1,1 @@
-../../libraries/point/point.js
+../../libraries/point.js

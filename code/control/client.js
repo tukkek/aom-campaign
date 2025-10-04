@@ -1,5 +1,5 @@
-import '../../libraries/array/array.js'
-import '../../libraries/range/range.js'
+import '../../libraries/array.js'
+import '../../libraries/range.js'
 import * as worldm from '../model/world.js'
 import * as mapm from '../view/map.js'
 
