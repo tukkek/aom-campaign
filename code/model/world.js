@@ -25,6 +25,7 @@ class Region{
   constructor(){
     this.cells=[]
     this.biome=false
+    this.border=[]
   }
 
   expand(){
@@ -34,6 +35,21 @@ class Region{
     for(let region of clientm.world.regions)
       if(region!=this&&region.cells.find((cell)=>cells.includes(cell))) near.push(region)
     return near
+  }
+
+  close(){
+    let cells=this.cells
+    let world=clientm.world
+    let border=this.border
+    for(let cell of cells){
+      let exterior=cell.point.expand().filter(((point)=>point.validate([0,world.width],[0,world.heigth])))
+        .map((point)=>world.cells[point.x][point.y]).filter((cell2)=>!cells.includes(cell2))
+      if(exterior.length>3) border.push(cell)
+    }
+    for(let cell of Array.from(border)){
+      let near=cell.expand().filter((cell2)=>border.includes(cell2))
+      if(near.length>2) border.remove(cell)
+    }
   }
 }
 
@@ -77,6 +93,9 @@ export class World{
   create(){
     this.shape()
     this.form(rpgm.pick(this.regions))
-    for(let region of this.regions) for(let cell of region.cells) cell.region=region
+    for(let region of this.regions){
+      region.close()
+      for(let cell of region.cells) cell.region=region
+    }
   }
 }

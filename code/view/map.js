@@ -17,7 +17,8 @@ export class Cell extends tiem.Clone{
     let size=`${Cell.size}px`
     style['width']=size
     style['height']=size
-    root.classList.add(this.model.region.biome.toLowerCase())
+    let region=this.model.region
+    root.classList.add(region.border.includes(this.model)?'border':region.biome.toLowerCase())
     root.addEventListener('mouseenter',()=>this.enter())
     root.addEventListener('mouseleave',()=>this.leave())
     return this
