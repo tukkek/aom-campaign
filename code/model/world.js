@@ -72,7 +72,8 @@ export class World{
     let near=new Map()
     for(let region of regions) near.set(region,new Set(region.cells[0].expand()))
     while(cells.size){
-      let region=rpgm.pick(regions)
+      regions.sort((region1,region2)=>region1.cells.length-region2.cells.length)
+      let region=rpgm.choose(regions,3)
       let pool=near.get(region)
       if(!pool.size) continue
       let cell=rpgm.pick(Array.from(pool))
@@ -91,11 +92,14 @@ export class World{
   }
 
   create(){
+    performance.mark('world1')
     this.shape()
     this.form(rpgm.pick(this.regions))
     for(let region of this.regions){
       region.close()
       for(let cell of region.cells) cell.region=region
     }
+    performance.mark('world2')
+    console.log('World creation',performance.measure('world','world1','world2').duration/1_000)
   }
 }
