@@ -1,6 +1,7 @@
 import * as rpgm from '../control/rpg.js'
 import * as clientm from '../control/client.js'
 import * as pointm from '../model/point.js'
+import * as savem from '../control/save.js'
 
 const BIOMES=['Sea','Mix','Land']
 
@@ -137,4 +138,12 @@ export class World{
     console.log('World creation',performance.measure('world','world1','world2').duration/1_000)
     console.log('Most near-bys',Math.max(...this.regions.map((region)=>region.expand().length)))
   }
+
+  save(){return 'world'}
+}
+
+export function ready(){
+  let save=()=>clientm.world.save()
+  let load=(world)=>alert(world)
+  savem.add('world',save,load)
 }

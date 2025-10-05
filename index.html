@@ -2,7 +2,13 @@
 <title>AOM campaign</title>
 <link rel='stylesheet' href='./style/client.css'>
 
-<div id='information'></div>
+<div id='information'>
+  <div class='save'>
+    <button class='save'>Save</button>
+    <input class='load' type='file'>
+  </div>
+</div>
+<link rel='stylesheet' href='./style/information.css'>
 
 <template class='map'>
   <div class='map'>
@@ -10,7 +16,6 @@
   </div>
 </template>
 <link rel='stylesheet' href='./style/map.css'>
-
 
 <script type='module'>
   import * as clientm from './code/control/client.js'
