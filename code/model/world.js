@@ -13,7 +13,7 @@ class Cell{
 
   expand(){
     let world=clientm.world
-    return this.point.expand().filter((point)=>point.validate([0,world.width],[0,world.heigth]))
+    return this.point.expand().filter((point)=>point.validate([0,world.width],[0,world.height]))
       .map((point)=>world.cells[point.x][point.y])
   }
 
@@ -46,7 +46,7 @@ class Region{
     let world=clientm.world
     let border=this.border
     for(let cell of cells){
-      let exterior=cell.point.expand().filter(((point)=>point.validate([0,world.width],[0,world.heigth])))
+      let exterior=cell.point.expand().filter(((point)=>point.validate([0,world.width],[0,world.height])))
         .map((point)=>world.cells[point.x][point.y]).filter((cell2)=>!cells.includes(cell2))
       if(exterior.length>3) border.push(cell)
     }
@@ -78,12 +78,12 @@ class Region{
 }
 
 export class World{
-  constructor(width=5**3,heigth=5**3,nregions=100){
+  constructor(width=5**3,height=5**3,nregions=100){
     this.width=width
-    this.heigth=heigth
+    this.height=height
     this.regions=Array.create(nregions,()=>new Region())
-    let cells=Array.create(width,()=>new Array(heigth))
-    for(let point of pointm.iterate([0,width],[0,heigth]))
+    let cells=Array.create(width,()=>new Array(height))
+    for(let point of pointm.iterate([0,width],[0,height]))
       cells[point.x][point.y]=new Cell(point)
     this.cells=cells
   }
@@ -138,12 +138,10 @@ export class World{
     console.log('World creation',performance.measure('world','world1','world2').duration/1_000)
     console.log('Most near-bys',Math.max(...this.regions.map((region)=>region.expand().length)))
   }
-
-  save(){return 'world'}
 }
 
 export function ready(){
-  let save=()=>clientm.world.save()
+  let save=()=>clientm.world
   let load=(world)=>alert(world)
-  savem.add('world',save,load)
+  savem.listen('world',save,load)
 }

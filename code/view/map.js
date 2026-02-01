@@ -46,7 +46,7 @@ export class Map extends tiem.Clone{
     let world=clientm.world
     let width=world.width
     this.root.style['grid-template-columns']=`repeat(${width},auto)`
-    let height=world.heigth
+    let height=world.height
     Cell.size=Math.floor(Math.min(window.innerWidth,innerHeight)/Math.max(width,height))
     let cells=Array.create(width,()=>new Array(height))
     for(let x of Math.step(0,width)) for(let y of Math.step(0,height))
